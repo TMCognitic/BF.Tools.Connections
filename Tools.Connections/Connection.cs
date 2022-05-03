@@ -17,6 +17,11 @@ namespace Tools.Connections
             _connectionString = connectionString;
         }
 
+        public object? ExecuteScalar(Command command)
+        {
+            throw new NotImplementedException();
+        }
+
         public int ExecuteNonQuery(Command command)
         {
             using (SqlConnection dbConnection = CreateConnection())
@@ -27,6 +32,11 @@ namespace Tools.Connections
                     return dbCommand.ExecuteNonQuery();
                 }
             }
+        }
+
+        public IEnumerable<TResult> ExecuteReader<TResult>(Command command, Func<IDataRecord, TResult> selector, bool immediately)
+        {
+            throw new NotImplementedException();
         }
 
         public IEnumerable<TResult> ExecuteReader<TResult>(Command command, Func<IDataRecord, TResult> selector)
@@ -45,6 +55,11 @@ namespace Tools.Connections
                     }
                 }
             }
+        }
+
+        public DataTable GetDataTable(Command command)
+        {
+            throw new NotImplementedException();
         }
 
         private SqlCommand CreateCommand(SqlConnection dbConnection, Command command)
